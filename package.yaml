@@ -1,0 +1,67 @@
+name:                piyo
+version:             0.1.0.0
+github:              "opyapeus/piyo"
+license:             MIT
+author:              "peus"
+maintainer:          "opyapeus@gmail.com"
+copyright:           "2018 peus"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+synopsis:            Haskell game engine like fantasy console.
+category:            Game
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/opyapeus/piyo#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- sdl2
+- sdl2-gfx
+- sdl2-image
+- sdl2-ttf
+- sdl2-mixer
+- extra
+- text
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - Piyo
+    - Piyo.Game
+    - Piyo.Asset
+    - Piyo.Types
+    - Piyo.Draw
+    - Piyo.Sound
+
+executables:
+  piyo-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - piyo
+
+tests:
+  piyo-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - piyo
+
+data-dir: assets
+data-files:
+  - fonts/JF-Dot-K12.ttf
+  - fonts/JF-Dot-K12B.ttf
